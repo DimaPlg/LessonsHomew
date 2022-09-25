@@ -8,6 +8,6 @@ public class Main {
         System.out.println("Enter number: ");
         num = sc.nextInt();
         String str_num = String.valueOf(num);
-        System.out.println(new StringBuilder(str_num).reverse().toString());
+        System.out.println(new StringBuilder(str_num).reverse());
     }
 }
