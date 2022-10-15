@@ -13,28 +13,30 @@ fun rookOrBishopThreatens(
     if(resultRook == 1) println("1")
     if(resultBishop == 1) println("2")
     if(resultRook + resultBishop == 2) println("3")
-    else println("0")
+    if(resultRook == 0 && resultBishop ==0) println("0")
 }
 
-fun horizontalVerticalCheck(kinX: Int, kinY: Int, figureOpponentX:Int, figureOpponentY:Int): Int {
-    var res =0
-    if(kinX == figureOpponentX)res = 1
-    if(kinY == figureOpponentY)res = 1
+fun horizontalVerticalCheck(kinX: Int, kinY: Int, figureOpponentX: Int, figureOpponentY: Int): Int {
+    var res = 0
+    if(kinX == figureOpponentX)res++
+    if(kinY == figureOpponentY)res++
     else res=0
     return(res)
 }
 
-fun diagonalCheck(kinX: Int, kinY: Int, figureOpponentX:Int, figureOpponentY:Int): Int {
-    var res =0
-    var kX = kinX
-    var kY = kinY
+fun diagonalCheck(kinX: Int, kinY: Int, figureOpponentX: Int, figureOpponentY: Int): Int {
     var fX = figureOpponentX
     var fY = figureOpponentY
-    while(fY !=0){
+    var kX = kinX
+    var kY = kinY
+    var res = 0
+
+
+    while(fY >1 && fX >1){
         fX--
         fY--
     }
-    while(fX !=9 || fY !=9){
+    while(fX < 9 && fY < 9){
         if(kX == fX && kY == fY){
             res++
             break
@@ -46,14 +48,14 @@ fun diagonalCheck(kinX: Int, kinY: Int, figureOpponentX:Int, figureOpponentY:Int
     fX = figureOpponentX
     fY = figureOpponentY
 
-    while(fY !=0){
+    while(fY > 1 && fX < 8){
         fX++
         fY--
     }
 
-    while(fX !=0 || fY !=9){
+    while(fX >0 && fY <9){
         if(kX == fX && kY == fY){
-            res++
+            res = 1
             break
         }
         fX--
